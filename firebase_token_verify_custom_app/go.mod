@@ -1,4 +1,4 @@
-module app4_2
+module firebase_token_verify_custom_app
 
 go 1.21.5
 
