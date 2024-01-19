@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  nginx:
+    image: nginx
+    container_name: "proxy_nginx"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./config/proxy_https.conf:/etc/nginx/conf.d/proxy_https.conf
+      - ./config/server.key:/etc/nginx/server.key
+      - ./config/server.crt:/etc/nginx/server.crt
+#    network_mode: host
+    depends_on:
+      - server1
+      - server2
+    networks:
+      - myNetwork
+
+  server1:
+    image: app1:v1
+    build:
+      context: ./app1
+      dockerfile: Dockerfile
+    networks:
+      - myNetwork
+
+  server2:
+    image: app2:v1
+    build:
+      context: ./app2
+      dockerfile: Dockerfile
+    networks:
+      - myNetwork
+
+networks:
+  myNetwork:
+    driver: bridge
