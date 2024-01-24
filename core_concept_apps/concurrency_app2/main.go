@@ -35,10 +35,11 @@ func main() {
 	s := &Server{
 		msgCh: make(chan Message),
 	}
-	sendMessageToServer(s.msgCh, "Hello Den!")
 
 	go s.StartAndListen()
 
+	sendMessageToServer(s.msgCh, "Hello Den!")
+	time.Sleep(30 * time.Millisecond)
 	sendMessageToServer(s.msgCh, "Hello Den2!")
 
 	time.Sleep(80 * time.Millisecond)
