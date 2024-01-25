@@ -1,8 +1,6 @@
-package main
+package safe_mutex_game
 
-import (
-	"testing"
-)
+import "testing"
 
 func TestGame(t *testing.T) {
 	player := NewPlayer()
