@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestDataRaceConditions1(t *testing.T) {
+func TestDataRaceConditionsMutex(t *testing.T) {
 	var state int
 	var mu sync.RWMutex
 
@@ -19,7 +19,7 @@ func TestDataRaceConditions1(t *testing.T) {
 	}
 }
 
-func TestDataRaceConditions2(t *testing.T) {
+func TestDataRaceConditionsAtomic(t *testing.T) {
 	var state int32
 
 	for i := 0; i < 10; i++ {
