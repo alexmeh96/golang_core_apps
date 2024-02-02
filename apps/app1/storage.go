@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	_ "github.com/lib/pq"
 )
 
 type Storage interface {
@@ -10,7 +11,7 @@ type Storage interface {
 	DeleteAccount(int) error
 	UpdateAccount(*Account) error
 	GetAccounts() ([]*Account, error)
-	GetAccountByID(int) (*Account, error)
+	GetAccountByID(int) ([]*Account, error)
 }
 
 type PostgresStore struct {
@@ -34,11 +35,12 @@ func NewPostgresStore() (*PostgresStore, error) {
 }
 
 func (s *PostgresStore) Init() error {
+	println("!!!")
 	return s.createAccountTable()
 }
 
 func (s *PostgresStore) createAccountTable() error {
-	query := `create table if not exist account (
+	query := `create table if not exists account (
     	id serial primary key,
     	first_name varchar(50),
     	last_name varchar(50),
@@ -81,7 +83,7 @@ func (s *PostgresStore) DeleteAccount(id int) error {
 	return nil
 }
 
-func (s *PostgresStore) GetAccountById(id int) (*Account, error) {
+func (s *PostgresStore) GetAccountByID(id int) ([]*Account, error) {
 	return nil, nil
 }
 
