@@ -11,7 +11,7 @@ type Storage interface {
 	DeleteAccount(int) error
 	UpdateAccount(*Account) error
 	GetAccounts() ([]*Account, error)
-	GetAccountByID(int) ([]*Account, error)
+	GetAccountByID(int) (*Account, error)
 }
 
 type PostgresStore struct {
@@ -83,7 +83,7 @@ func (s *PostgresStore) DeleteAccount(id int) error {
 	return nil
 }
 
-func (s *PostgresStore) GetAccountByID(id int) ([]*Account, error) {
+func (s *PostgresStore) GetAccountByID(id int) (*Account, error) {
 	return nil, nil
 }
 
