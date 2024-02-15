@@ -1,3 +1,3 @@
 module http_test_handler_app
 
-go 1.21
+go 1.22

@@ -1,6 +1,6 @@
 module kafka_app
 
-go 1.21
+go 1.22
 
 require (
 	github.com/klauspost/compress v1.15.9 // indirect

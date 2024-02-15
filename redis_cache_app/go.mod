@@ -1,6 +1,6 @@
 module redis_cache_app
 
-go 1.21
+go 1.22
 
 require (
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
